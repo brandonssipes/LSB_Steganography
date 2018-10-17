@@ -33,8 +33,12 @@ class LSBDecrypter:
 
         # Converting binary value to ASCII
         n = int(new_byte, 2)
-        desteg_char = binascii.unhexlify('%x' % n)
-        return desteg_char
+        try:
+            desteg_char = binascii.unhexlify('%x' % n)
+            return desteg_char
+        except:
+            pass
+        return str(n)
 
     # Gets the length of the hidden text,
     # It was inserted before the delimiter
